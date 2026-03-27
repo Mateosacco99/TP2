@@ -10,30 +10,32 @@ const persona = {
 
 persona.saludar();
 
-//let nombre = "Juan";
 
-//console.log('nombre: ' + nombre);
+function heladito(str) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (str === "bien") {
+                resolve("hay helado");
+            } else {
+                reject("no hay helado");
+            }
+        }, 2000);
+    });
+};
 
-//const fecha_nac = "17/03/1987";
+// Ejemplo con .then() y .catch()
+heladito("bien")
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
 
-//console.log('fecha de nacimiento: ' + fecha_nac);
+// Ejemplo con async/await
+async function test() {
+    try {
+        const result = await heladito("bien");
+        console.log(result);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-//let edad = 2026 - 1987;
-
-//console.log('edad: ' + edad);
-
-//const array = [1, 2, 3, 4, 5, {}, [], "hola", true, false];
-
-//console.log('array: ' + array);
-
-//array[0] = "adios";
-
-//console.log('array: ' + array);
-
-//array.push("nuevo elemento");
-
-//console.log('array: ' + array);
-
-//array.pop();
-
-//console.log('array: ' + array);
+test();
